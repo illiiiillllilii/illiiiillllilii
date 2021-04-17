@@ -11,6 +11,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - run: echo "$(date)" > ${GITHUB_REF##*/}.md
+      - run: echo "$(date)" > ${{GITHUB_REF##*/}}.md
 
-      - run: cat ${GITHUB_REF##*/}.md
+      - run: cat ${{GITHUB_REF##*/}}.md
+
+      - run: ls -la
