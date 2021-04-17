@@ -1,0 +1,16 @@
+name: Update github pages
+
+on: [push]
+
+jobs:
+  update-pages-repo:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout to target branch
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - run: echo "$(date)" > ${{ github.head_ref }}.md
+
+      - run: cat ${{ github.head_ref }}.md
