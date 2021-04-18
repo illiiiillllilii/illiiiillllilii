@@ -6,7 +6,6 @@ jobs:
   update-pages-repo:
     env:
       BRANCH: ${GITHUB_REF##*/}
-      DEPLOY_LINK: https://illiiiillllilii.github.io/${ GITHUB_REF##*/ }/index.html
     runs-on: ubuntu-latest
     steps:
       # Checkout to target branch
@@ -40,6 +39,6 @@ jobs:
       - uses: ouzi-dev/commit-status-updater@v1.1.0
         with:
           status: "success"
-          url: ${{ env.DEPLOY_LINK }}
+          url: https://illiiiillllilii.github.io/${{ env.BRANCH }}/index.html
           description: "Successfully deployed to pages"
-          name: "GitHub Pages deploy"
+          name: "GH Pages"
