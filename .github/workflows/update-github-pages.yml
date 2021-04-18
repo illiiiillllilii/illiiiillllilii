@@ -28,7 +28,7 @@ jobs:
       - run: |
           rm -rf ./PAGES/${GITHUB_REF##*/}
           mkdir -p ./PAGES/${GITHUB_REF##*/}
-          cp -R dist/ ./PAGES/${GITHUB_REF##*/}
+          cp -R dist/* ./PAGES/${GITHUB_REF##*/}
           cd ./PAGES
           git add .
           git commit -m "chore: add new dist folder"
