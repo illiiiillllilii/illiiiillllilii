@@ -15,6 +15,10 @@ jobs:
       - run: echo "$(date)" > dist/${GITHUB_REF##*/}.md
       - run: cat dist/${GITHUB_REF##*/}.md
 
+      - run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "github-actions"
+
       - uses: actions/checkout@v2
         with:
           repository: illiiiillllilii/illiiiillllilii.github.io
