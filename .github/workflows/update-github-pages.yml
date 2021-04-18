@@ -16,11 +16,11 @@ jobs:
       - run: cat dist/${GITHUB_REF##*/}.md
 
       - run: |
-          git clone --depth 1 https://github.com/illiiiillllilii/illiiiillllilii.github.io.git /PAGES
-          rm -rf /PAGES/${GITHUB_REF##*/}
-          mkdir -p /PAGES/${GITHUB_REF##*/}
-          cp -R dist/ /PAGES/${GITHUB_REF##*/}
-          cd /PAGES
+          git clone --depth 1 https://github.com/illiiiillllilii/illiiiillllilii.github.io.git PAGES
+          rm -rf PAGES/${GITHUB_REF##*/}
+          mkdir -p PAGES/${GITHUB_REF##*/}
+          cp -R dist/ PAGES/${GITHUB_REF##*/}
+          cd PAGES
           git add .
           git commit -m "chore: add new dist folder"
           git push
