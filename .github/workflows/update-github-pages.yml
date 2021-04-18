@@ -23,6 +23,7 @@ jobs:
         with:
           repository: illiiiillllilii/illiiiillllilii.github.io
           path: ./PAGES
+          token: ${{ secrets.TALY_GH_TOKEN }}
 
       - run: |
           rm -rf ./PAGES/${GITHUB_REF##*/}
