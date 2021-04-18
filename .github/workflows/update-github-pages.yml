@@ -1,4 +1,4 @@
-name: Update github pages
+name: GitHub Pages deploy
 
 on: [push]
 
@@ -26,9 +26,9 @@ jobs:
           token: ${{ secrets.TALY_GH_TOKEN }}
 
       - run: |
-          rm -rf ./PAGES/${GITHUB_REF##*/}
-          mkdir -p ./PAGES/${GITHUB_REF##*/}
-          cp -R dist/* ./PAGES/${GITHUB_REF##*/}
+          rm -rf ./PAGES/${{ GITHUB_HEAD_REF }}
+          mkdir -p ./PAGES/${{ GITHUB_HEAD_REF }}
+          cp -R dist/* ./PAGES/${{ GITHUB_HEAD_REF }}
           cd ./PAGES
           git add .
           git commit -m "chore: add new dist folder"
@@ -37,5 +37,6 @@ jobs:
       - uses: ouzi-dev/commit-status-updater@v1.1.0
         with:
           status: "success"
-          url: https://illiiiillllilii.github.io/${GITHUB_REF##*/}/index.html
+          url: "https://illiiiillllilii.github.io/${{ GITHUB_HEAD_REF }}/index.html"
           description: "Successfully deployed to pages"
+          name: "GitHub Pages deploy"
