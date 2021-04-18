@@ -12,8 +12,8 @@ jobs:
           fetch-depth: 0
 
       - run: mkdir dist
-      - run: echo "$(date)" > dist/${GITHUB_REF##*/}.md
-      - run: cat dist/${GITHUB_REF##*/}.md
+      - run: echo "$(date)" > dist/index.md
+      - run: cat dist/index.md
 
       - run: |
           git config --global user.email "action@github.com"
