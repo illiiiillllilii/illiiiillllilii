@@ -33,3 +33,9 @@ jobs:
           git add .
           git commit -m "chore: add new dist folder"
           git push
+
+      - uses: ouzi-dev/commit-status-updater@v1.1.0
+        with:
+          status: "success"
+          url: https://illiiiillllilii.github.io/${GITHUB_REF##*/}/index.html
+          description: "Successfully deployed to pages"
