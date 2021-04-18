@@ -40,6 +40,6 @@ jobs:
       - uses: ouzi-dev/commit-status-updater@v1.1.0
         with:
           status: "success"
-          url: ${{ DEPLOY_LINK }}
+          url: ${{ env.DEPLOY_LINK }}
           description: "Successfully deployed to pages"
           name: "GitHub Pages deploy"
