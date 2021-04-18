@@ -4,6 +4,9 @@ on: [push]
 
 jobs:
   update-pages-repo:
+    env:
+      BRANCH: ${GITHUB_REF##*/}
+      DEPLOY_LINK: https://illiiiillllilii.github.io/${{ env.BRANCH }}/index.html
     runs-on: ubuntu-latest
     steps:
       # Checkout to target branch
@@ -26,9 +29,9 @@ jobs:
           token: ${{ secrets.TALY_GH_TOKEN }}
 
       - run: |
-          rm -rf ./PAGES/${{ GITHUB_HEAD_REF }}
-          mkdir -p ./PAGES/${{ GITHUB_HEAD_REF }}
-          cp -R dist/* ./PAGES/${{ GITHUB_HEAD_REF }}
+          rm -rf ./PAGES/${{ env.BRANCH }}
+          mkdir -p ./PAGES/${{ env.BRANCH }}
+          cp -R dist/* ./PAGES/${{ env.BRANCH }}
           cd ./PAGES
           git add .
           git commit -m "chore: add new dist folder"
@@ -37,6 +40,6 @@ jobs:
       - uses: ouzi-dev/commit-status-updater@v1.1.0
         with:
           status: "success"
-          url: "https://illiiiillllilii.github.io/${{ GITHUB_HEAD_REF }}/index.html"
+          url: ${{ DEPLOY_LINK }}
           description: "Successfully deployed to pages"
           name: "GitHub Pages deploy"
