@@ -5,9 +5,13 @@ on: [push]
 jobs:
   update-pages-repo:
     env:
-      BRANCH: ${GITHUB_REF##*/}
+      BRANCH: ${ GITHUB_REF##*/ }
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{ github.ref }}
+      - run: echo ${{ github.head_ref }}
+
+
       # Checkout to target branch
       - uses: actions/checkout@v2
         with:
